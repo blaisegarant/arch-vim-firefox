@@ -1,11 +1,8 @@
 FROM binhex/arch-int-gui:latest
-MAINTAINER binhex
+MAINTAINER blaisegarant
 
 # additional files
 ##################
-
-# add install and packer bash script
-ADD build/root/*.sh /root/
 
 # add pre-configured config files for deluge
 ADD config/nobody/ /home/nobody/
@@ -13,9 +10,7 @@ ADD config/nobody/ /home/nobody/
 # install app
 #############
 
-# make executable and run bash scripts to install app
-RUN chmod +x /root/*.sh && \
-	/bin/bash /root/install.sh
+RUN pacman -s vim firefox
 
 # docker settings
 #################
